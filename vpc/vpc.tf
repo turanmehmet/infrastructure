@@ -17,3 +17,11 @@ module "vpc" {
     Bill        = var.config["Bill"]
   }
 }
+data "terraform_remote_state" "infra" {
+  backend = "s3"
+  config = {
+  bucket = "backend-state-turan2021"
+    key    = "path/to/my/key"
+    region = "us-east-1"
+  }
+}
